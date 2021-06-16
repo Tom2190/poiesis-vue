@@ -1,6 +1,10 @@
+import InscripcionForm from '../../../InscripcionForm'
+
 export default {
   name: "Formulario",
-  components: {},
+  components: {
+    InscripcionForm
+  },
   props: [],
   data() {
     return {
