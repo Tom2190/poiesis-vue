@@ -32,12 +32,12 @@
                 <a class="nav-link" href="#">Inicio</a>
               </router-link>
             </li>
-            <li class="nav-item">
+            <li v-if="!getIsUserLogged" class="nav-item">
               <router-link to="/inscripcion">
                 <a class="nav-link" href="#">Inscripción</a>
               </router-link>
             </li>
-            <li class="nav-item">
+            <li v-if="getIsUserLogged" class="nav-item">
               <router-link to="/perfil">
                 <a class="nav-link" href="#">Perfil</a>
               </router-link>
@@ -47,15 +47,18 @@
                 <a class="nav-link" href="#">Área Común</a>
               </router-link>
             </li>
-            <li class="nav-item">
+            <li v-if="getIsUserLogged" class="nav-item">
               <router-link to="/textos">
                 <a class="nav-link" href="#">Mis textos</a>
               </router-link>
             </li>
-            <li class="nav-item">
+            <li v-if="!getIsUserLogged" class="nav-item">
               <router-link to="/login">
                 <a class="nav-link" href="#">Login</a>
               </router-link>
+            </li>
+            <li v-if="getIsUserLogged" class="nav-item">
+                <button type="button" @click="logout" class="btn btn-link">Log out</button>
             </li>
           </ul>
         </div>
@@ -78,10 +81,15 @@
       }
     },
     methods: {
-
+      logout(){
+        sessionStorage.clear();
+        this.$store.dispatch('validateUserSession');
+      }
     },
     computed: {
-
+      getIsUserLogged(){
+        return this.$store.state.isUserLogged
+      }
     }
 }
 

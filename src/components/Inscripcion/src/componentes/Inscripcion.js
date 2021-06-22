@@ -1,42 +1,55 @@
-import InscripcionForm from '../../../InscripcionForm'
-
 export default {
-  name: "Formulario",
-  components: {
-    InscripcionForm
-  },
+  name: 'src-componentes-inscripcion',
+  components: {},
   props: [],
-  data() {
+  data () {
     return {
-      formData: this.getInicialData(),
+      url: 'http://localhost:3000/signup',
+      formData : this.getInicialData(),
       formState: {},
-      nombreLengthMin: 3,
-      nombreLengthMax: 15,
-      edadMin: 18,
-      edadMax: 120,
-      url: "https://60a5969fc0c1fd00175f40c0.mockapi.io/api/users",
-    };
+      nombreLengthMin : 3,
+      nombreLengthMax: 10,
+    }
   },
-  computed: {},
-  mounted() {},
+  computed: {
+
+  },
+  mounted () {
+
+  },
   methods: {
     getInicialData() {
       return {
-        name: "",
-        age: "",
-        email: "",
-      };
-    },
-    async postUsuario() {
-      try {
-        await this.axios.post(this.url, this.formData, {
-          "content-type": "application/json",
-        });
-        this.formData = this.getInicialData();
-        this.formState._reset();
-      } catch (error) {
-        console.log(error);
+        name: '',
+        lastName: '',
+        email: '',
+        password: '',
+        chosenDateTime: '',
+        writingFrequency: '',
+        writingGenre: '',
+        phone: '',
+        dni: '',
       }
     },
-  },
-};
+
+    async enviar() {
+      const user =  {...this.formData}
+      console.log(user);
+      try {
+        const res = await this.axios.post(this.url, user);
+        const token = res.data.token;
+        sessionStorage.setItem('userSession', token);
+        // const testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InduUDVZMDVpcTdLNE51TEZOMHFTIiwiaWF0IjoxNjI0MzIzNjE4fQ.XxN09oUdxS-AGiXNMH8JJ6q8H9BoKxyrOzYDpmogZWk"
+        // sessionStorage.setItem('userSession', testToken);
+        this.$store.dispatch('validateUserSession');
+      } catch (error) {
+        console.log("ERROR!", error);
+      }
+
+      this.formData = this.getInicialData()
+      this.formState._reset()
+    }
+  }
+}
+
+

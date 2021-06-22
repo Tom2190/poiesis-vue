@@ -18,6 +18,19 @@ export default {
     Navbar,
     Footer,
   },
+  async mounted(){
+    await this.$store.dispatch('validateUserSession');
+    if(this.getIsUserLogged){
+      console.log("Estas logeado!");
+    } else{
+      console.log("No estas logeado!");
+    }
+  },
+  computed:{
+    getIsUserLogged(){
+      return this.$store.state.isUserLogged
+    }
+  }
 };
 </script>
 
