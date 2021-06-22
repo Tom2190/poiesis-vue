@@ -1,0 +1,9 @@
+.container {
+    padding: 2px 16px;
+    width: 30%;
+  }
+
+  label {
+    display: block;
+    text-align: left;
+}
