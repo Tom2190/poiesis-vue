@@ -4,6 +4,7 @@ export default {
   props: [],
   data() {
     return {
+      url: `http://localhost:3000/texts?page=1&genre=fiction`,
       textos: []
     };
   },
