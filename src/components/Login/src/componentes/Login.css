@@ -3,7 +3,16 @@
     width: 30%;
   }
 
-  label {
+label {
     display: block;
     text-align: left;
+}
+
+.recuperar {
+    color: #4EB7BC;
+}
+
+.login-center {
+    display: flex;
+    align-items: center;
 }
