@@ -18,19 +18,19 @@ export default {
     Navbar,
     Footer,
   },
-  async mounted(){
-    await this.$store.dispatch('validateUserSession');
-    if(this.getIsUserLogged){
+  async mounted() {
+    await this.$store.dispatch("validateUserSession");
+    if (this.getIsUserLogged) {
       console.log("Estas logeado!");
-    } else{
+    } else {
       console.log("No estas logeado!");
     }
   },
-  computed:{
-    getIsUserLogged(){
-      return this.$store.state.isUserLogged
-    }
-  }
+  computed: {
+    getIsUserLogged() {
+      return this.$store.state.isUserLogged;
+    },
+  },
 };
 </script>
 
@@ -153,15 +153,28 @@ textarea {
 }
 
 .btn.btn-poiesis {
-    background-color: #4EB7BC;
-    border-color: rgb(255, 255, 255);
-    color:#ffffff;
-    border-radius: 10px;
+  background-color: #4eb7bc;
+  border-color: rgb(255, 255, 255);
+  color: #ffffff;
+  border-radius: 10px;
 }
 
 .btn.btn-poiesis:hover {
-    background-color: #469FA4;
-    color: white;
+  background-color: #469fa4;
+  color: white;
 }
 
+.btn.btn-outline-poiesis {
+  background-color: #ffffff;
+  border-color: #4eb7bc;
+  color: #4eb7bc;
+  border-radius: 10px;
+}
+
+.btn.btn-outline-poiesis:hover {
+  background-color: #4eb7bc;
+  border-color: rgb(255, 255, 255);
+  color: #ffffff;
+  border-radius: 10px;
+}
 </style>

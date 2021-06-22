@@ -1,6 +1,26 @@
-<section>
-  <div class="container-fluid">
-    <h2>Perfil</h2>
-    <hr />
+<section class="cover-img-bg full-height">
+  <div class="blue-overlay">
+    <div class="container">
+      <div class="card-container p-4">
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <div class="d-grid gap-2">
+              <button type="button" v-for="button in buttons" :key="button.id" :class="getButtonClass(button.id)" @click="onChangeView(button.id)" >{{button.text}}</button>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-9">
+            <div v-if="view === 'crear-texto'">
+              <CrearTextoForm/>
+            </div>
+            <div v-else-if="view === 'editar-perfil'">
+              Editar perfil
+            </div>
+            <div v-else="view === 'cambiar-password'">
+             Cambiar pass
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
