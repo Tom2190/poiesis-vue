@@ -84,6 +84,7 @@
       logout(){
         sessionStorage.clear();
         this.$store.dispatch('validateUserSession');
+        this.$router.push({path:"/inicio"})
       }
     },
     computed: {
