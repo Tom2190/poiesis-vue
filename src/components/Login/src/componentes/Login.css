@@ -1,18 +1,19 @@
 .container {
-    padding: 2px 16px;
-    width: 30%;
-  }
+  padding: 2px 16px;
+  width: 100%;
+  max-width: 500px;
+}
 
 label {
-    display: block;
-    text-align: left;
+  display: block;
+  text-align: left;
 }
 
 .recuperar {
-    color: #4EB7BC;
+  color: #4eb7bc;
 }
 
 .login-center {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
