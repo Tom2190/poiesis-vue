@@ -12,4 +12,12 @@ const updatePassword = (user) => {
     return http.post("/update/password", user);
 }
 
-export default {updatePassword}
+const updateUser = async (user) => {
+    return await http.put("/user/profile", user)
+}
+
+const getUser = async () => {
+    return await http.get("/user")
+}
+
+export default { updatePassword, updateUser, getUser }
