@@ -133,7 +133,7 @@
       genres: [
         {value: "", label: "Seleccionar una opción"},
         {value: "fiction", label: "Ficción"},
-        {value:"non_fiction", label: "No ficción"}, 
+        {value:"non_fiction", label: "No ficción"},
         {value: "poetry", label: "Poesía"}
       ],
       nombreLengthMin : 3,
@@ -154,19 +154,44 @@
             console.log(event.target.files);
             this.formData.demo = event.target.files[0]
         },
-        crearTexto() {
+        async crearTexto() {
 
-            console.log({...this.formData})
-
-            this.formData = this.getInicialData()
-            this.formState._reset()
+          console.log({...this.formData})
+          const {
+            title,
+            genre,
+            hasPdf,
+            content,
+            demo
+          } = this.formData
+          let form = new FormData();
+          form.append("title", title);
+          form.append("genre", genre);
+          form.append("hasPdf", hasPdf);
+          form.append("content", content);
+          form.append("demo", demo);
+          console.log(form)
+          const token = sessionStorage.getItem('userSession')
+          try {
+            const resPost = await this.axios({
+              method: "post",
+              url: "http://localhost:3000/texts",
+              data: form,
+              headers: {
+                "Content-Type": `multipart/form-data; boundary=${form._boundary}`,
+                "x-access-token": token,
+              },
+            });
+            console.log("crear texto res:", resPost.data);
+          } catch (err) {
+            console.log(err.message);
+          }
+          this.formData = this.getInicialData()
+          this.formState._reset()
         }
     },
 
 }
-
-
 </script>
 
-<style scoped lang="css">
-</style>
+<style scoped lang="css"></style>
