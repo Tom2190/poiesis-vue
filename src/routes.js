@@ -8,6 +8,7 @@ import AreaComun from "./components/AreaComun/index.vue";
 import Login from "./components/Login/index.vue";
 import Perfil from "./components/Perfil/index.vue";
 import DetalleTexto from "./components/DetalleTexto.vue";
+import TextsByGenre from "./components/TextsByGenre.vue";
 
 Vue.use(VueRouter);
 
@@ -18,7 +19,8 @@ export const router = new VueRouter({
     { path: "/inicio", component: Inicio },
     { path: "/inscripcion", component: Inscripcion },
     { path: "/perfil", component: Perfil },
-    { path: "/area-comun", component: AreaComun },
+    { path: "/area-comun", component: AreaComun, props: true },
+    { path: "/area-comun/:genre", component: TextsByGenre, props: true },
     { path: "/textos", component: Textos },
     { path: "/textos/:idTexto", component: DetalleTexto },
     { path: "/login", component: Login },
