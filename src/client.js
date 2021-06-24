@@ -7,11 +7,9 @@ const http = axios.create({
     headers: {'Content-Type': 'application/json', 'x-access-token': token}
 });
 
-// EXAMPLE
-const signup = (user) => {
-    return http.post("/signup", user);
+
+const updatePassword = (user) => {
+    return http.post("/update/password", user);
 }
 
-
-// export default { signup };
-export default {signup}
+export default {updatePassword}
