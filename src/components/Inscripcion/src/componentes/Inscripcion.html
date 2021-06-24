@@ -63,26 +63,6 @@
               </field-messages>
             </validate>
             <br>
-
-            <!-- ------------------------------------------------------------------------ -->
-            <!-- Campo Genero de Escritura Predilecto -->
-            <validate tag="div">
-              <label for="writingGenre">Género de escritura predilecto:</label>
-              <br>
-              <select id="writingGenre" name="writingGenre" class="form-control" autocomplete="on"
-                v-model.trim="formData.writingGenre" required>
-                <option disabled value="">Seleccione un género</option>
-                <option value="fiction">Ficción</option>
-                <option value="non_fiction">No Ficción</option>
-                <option value="poetry">Poesía</option>
-              </select>
-              <!-- Carteles de validación de campo -->
-              <field-messages name="writingGenre" show="$dirty">
-                <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
-              </field-messages>
-            </validate>
-            <br>
-
           </div>
 
           <div class="col-md">
@@ -127,6 +107,28 @@
             </validate>
             <br>
 
+           
+
+          </div>
+          <div class="col-md">
+            <!-- ------------------------------------------------------------------------ -->
+            <!-- Campo Genero de Escritura Predilecto -->
+            <validate tag="div">
+              <label for="writingGenre">Género de escritura predilecto:</label>
+              <br>
+              <select id="writingGenre" name="writingGenre" class="form-control" autocomplete="on"
+                v-model.trim="formData.writingGenre" required>
+                <option disabled value="">Seleccione un género</option>
+                <option value="fiction">Ficción</option>
+                <option value="non_fiction">No ficción</option>
+                <option value="poetry">Poesía</option>
+              </select>
+              <!-- Carteles de validación de campo -->
+              <field-messages name="writingGenre" show="$dirty">
+                <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
+              </field-messages>
+            </validate>
+            <br>
             <!-- ------------------------------------------------------------------------ -->
             <!-- Campo Frecuencia de Lectura -->
             <validate tag="div">
@@ -135,9 +137,9 @@
               <select id="writingFrequency" name="writingFrequency" class="form-control" autocomplete="on"
                 v-model.trim="formData.writingFrequency" required>
                 <option disabled value="">Seleccione una frecuencia</option>
-                <option value="little">Poca Frecuencia</option>
-                <option value="normal">Media Frecuencia</option>
-                <option value="lot">Mucha Frecuencia</option>
+                <option value="little">Poca</option>
+                <option value="normal">Media</option>
+                <option value="lot">Mucha</option>
               </select>
               <!-- Carteles de validación de campo -->
               <field-messages name="writingFrequency" show="$dirty">
@@ -145,20 +147,16 @@
               </field-messages>
             </validate>
             <br>
-
-          </div>
-          <div class="col-md">
-
             <!-- ------------------------------------------------------------------------ -->
             <!-- Campo Eleccion de Dia y Horario -->
             <validate tag="div">
-              <label for="chosenDateTime">Eleccion de dia y horario:</label>
+              <label for="chosenDateTime">Elección de día y horario:</label>
               <br>
               <select id="chosenDateTime" name="chosenDateTime" class="form-control" autocomplete="on"
                 v-model.trim="formData.chosenDateTime" required>
                 <option disabled value="">Seleccione una fecha</option>
-                <option value="saturday">Sabado de 18:00 hasta 19:30</option>
-                <option value="sunday">Domingo de 18:00 hasta 19:30</option>
+                <option value="friday">Viernes de 19:00 a 20:30</option>
+                <option value="saturday">Sábado de 18:00 a 20:00</option>
               </select>
               <!-- Carteles de validación de campo -->
               <field-messages name="chosenDateTime" show="$dirty">
@@ -173,14 +171,11 @@
 
         <!-- ------------------------------------------------------------------------ -->
         <!-- ------------------------------------------------------------------------ -->
-        <button class="btn btn-success my-4" :disabled="formState.$invalid" type="submit">Enviar</button>
-
+        <div class="d-grid gap-2 col-md-1 col-sm-12 mx-auto">
+          <button class="btn btn-poiesis my-4" :disabled="formState.$invalid" type="submit">Enviar</button>
+        </div>
       </vue-form>
 
-    </div>
-
-    <div>
-      <a href="#">Volver a la lista de usuarios</a>
     </div>
   </div>
 </section>

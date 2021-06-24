@@ -1,8 +1,11 @@
 import CrearTextoForm from "../../../CrearTextoForm.vue"
+import EditarPerfil from "../../src/componentes/EditarPerfil.vue"
+
 export default {
   name: "Perfil",
   components: {
-    CrearTextoForm
+    CrearTextoForm,
+    EditarPerfil
   },
   props: [],
   data() {
