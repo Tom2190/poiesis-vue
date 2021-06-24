@@ -12,11 +12,11 @@ const updatePassword = (user) => {
 };
 
 const updateUser = async (user) => {
-    return await http.put("/user/profile", user)
+    return await http.put("/users/profile", user)
 }
 
 const getUser = async () => {
-    return await http.get("/user")
+    return await http.get("/users",user.id)
 }
 
 export default { updatePassword, updateUser, getUser }
