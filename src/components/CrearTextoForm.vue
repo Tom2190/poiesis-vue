@@ -116,6 +116,9 @@
         </button>
       </div>
     </vue-form>
+    <div v-if="success" class="alert alert-success" role="alert">
+      Texto creado con éxito!
+    </div>
   </div>
 </template>
 
@@ -138,6 +141,7 @@
       ],
       nombreLengthMin : 3,
       nombreLengthMax: 50,
+      success: false,
       }
     },
     methods: {
@@ -183,6 +187,10 @@
               },
             });
             console.log("crear texto res:", resPost.data);
+            this.success = true;
+            setTimeout(() => {
+              this.success = false;
+            }, 2000);
           } catch (err) {
             console.log(err.message);
           }
