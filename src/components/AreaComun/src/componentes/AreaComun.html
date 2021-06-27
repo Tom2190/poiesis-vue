@@ -1,11 +1,18 @@
 <section>
-  <div class="container-fluid">
-    <h2>Área común</h2>
-    <div>
-      <button @click="redirectToGenre('fiction')">Btn 1</button>
-      <button @click="redirectToGenre('non_fiction')">Btn 2</button>
-      <button @click="redirectToGenre('poetry')">Btn 3</button>
+  <div class="hero-image">
+    <div class="hero-text">
+      <div>
+        <h1 class="font-abril">Área común</h1>
       </div>
-    <hr />
+    </div>
+  </div>
+  <div class="container-fluid botones">
+    <div>
+      
+      <button class="non_fiction" @click="redirectToGenre('non_fiction')"></button>
+      <button class="poetry" @click="redirectToGenre('poetry')"></button>
+      <button class="fiction" @click="redirectToGenre('fiction')"></button>
+      </div>
+    
   </div>
 </section>
