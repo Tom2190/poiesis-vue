@@ -4,26 +4,26 @@
         <div class="hero-text">
             <div>
                 <h1 class="font-abril">{{ this.$route.params.genre }}</h1>
-                
             </div>
         </div>
     </div> 
     
   
-   
-    <mdb-form-inline class="ml-auto">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-            <mdb-btn size="sm" type="submit" class="mr-auto" outline="white">Search</mdb-btn>
-    </mdb-form-inline>
+    <div class="row earchbar-input">
+      <input class="form-control mr-sm-2 column" v-model="criterioDeBusqueda" type="search" placeholder="Buscar por titulo" aria-label="Search" />
+      <a href="#" class="searchbar-clear"></a>
+    </div>
 
+    <br>
     <div>
         <div class="row">
-            <div class="col-3 column card" v-for="(item, index) in result" :key= "index">
+            <div class="col-3 column card"  v-for="(item, index) in filteredList()" :key= "index">
                 <h4 class="card-title" >{{ item.title }}</h4>
                 <p class="card-text">{{ item.userId }}</p>
             </div>
         </div>
-    </div> 
+    </div>
+
     
     </section>       
     <!--  @click="redirectToTexto(texto)" -->   
@@ -43,11 +43,13 @@
         props: [],
         
         
+        
     
         data() {
         return {
             result: null,
-            genre: ""
+            genre: "",
+            criterioDeBusqueda: '',
             };
         },
         computed: {},
@@ -55,6 +57,8 @@
             let genre = this.$route.params.genre 
             await this.getTexts(genre)
             },
+
+
         methods: {
             async getTexts(genre) {  
                 let responseData = await this.axios.get(`http://localhost:3000/texts?page=1&genre=${genre}`)
@@ -65,13 +69,14 @@
                }  
                 
             },  
+
             filteredList() {
-                return this.result.filter(post => {
-                return post.title.toLowerCase().includes(this.search.toLowerCase())
-      })
-    }
-         
-          
+              if(this.result){
+                return this.result.filter((post) => {
+                return `${post.title}`.toLowerCase().includes(this.criterioDeBusqueda.toLowerCase())
+                })
+              }
+            }
         }
     };
 </script>
@@ -101,6 +106,7 @@ body {
   width: 25%;
   padding: 0 10px;
   margin-left: 80px;
+  margin-top: 20px;
 }
 
 /* Remove extra left and right margins, due to padding in columns */
@@ -143,6 +149,7 @@ body {
   flex-flow: row wrap;
   justify-content: space-between;
 }
+
 
 
 
