@@ -5,16 +5,19 @@ export default {
   data() {
     return {
       url: `http://localhost:3000/texts?page=1&genre=fiction`,
-      textos: []
+      textos: [],
+      genre: " "
     };
   },
   computed: {},
   async mounted() {
-    await this.getTexts()
+  
   },
   methods: {
     redirectToGenre(genre){
       this.$router.push(`/area-comun/${genre}`)
-    }
+      
+    },
+    
   },
 };

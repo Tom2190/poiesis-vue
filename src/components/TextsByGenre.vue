@@ -8,75 +8,71 @@
             </div>
         </div>
     </div> 
-    <br>
+    
+  
+   
+    <mdb-form-inline class="ml-auto">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+            <mdb-btn size="sm" type="submit" class="mr-auto" outline="white">Search</mdb-btn>
+    </mdb-form-inline>
+
     <div>
         <div class="row">
-        <div class="column">
-            <div class="card">
-                <h5 class=""> AUTOR </h5>
-                <p> NOMBRE DEL CUENTO </p>
+            <div class="col-3 column card" v-for="(item, index) in result" :key= "index">
+                <h4 class="card-title" >{{ item.title }}</h4>
+                <p class="card-text">{{ item.userId }}</p>
             </div>
         </div>
-        <div class="column">
-            <div class="card">
-                <h5 class=""> AUTOR </h5>
-                <p> NOMBRE DEL CUENTO </p>
-            </div>
-        </div>
-        <div class="column">
-            <div class="card">
-                <h5 class=""> AUTOR </h5>
-                <p> NOMBRE DEL CUENTO </p>
-            </div>
-        </div>
-        <div class="column">
-            <div class="card">
-                <h5 class=""> AUTOR </h5>
-                <p> NOMBRE DEL CUENTO </p>
-            </div>
-        </div>
-
-    </div>
-    </div>
-
-        
-    </section>          
+    </div> 
+    
+    </section>       
+    <!--  @click="redirectToTexto(texto)" -->   
 </template>
 
 
 
 <script>
+    import { mdbIcon, mdbFormInline, mdbInput } from 'mdbvue';
     export default {
         name: "TextsByGenre",
-        components: {},
+        components: {
+            mdbIcon,
+            mdbFormInline,
+            mdbInput
+        },
         props: [],
+        
+        
     
         data() {
         return {
-            url: `http://localhost:3000/texts?page=1&genre=fiction}`,
-            responseData: [],
+            result: null,
             genre: ""
             };
         },
         computed: {},
             async mounted() {
-            const genre = this.$route.params.genre 
+            let genre = this.$route.params.genre 
             await this.getTexts(genre)
-            
             },
         methods: {
-            
-            async getTexts(genre) {
-                
+            async getTexts(genre) {  
                 let responseData = await this.axios.get(`http://localhost:3000/texts?page=1&genre=${genre}`)
-                console.log(responseData.data);   
-                //textos =  responseData.data    
-            }  
-        },
-
-        
-
-
+                if (responseData.data) {
+                    console.log(responseData.data);  
+                    this.result = responseData.data.content;
+                    //console.log(this.result);                  
+               }  
+                
+            },  
+            filteredList() {
+                return this.result.filter(post => {
+                return post.title.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
+         
+          
+        }
     };
 </script>
 
@@ -86,6 +82,9 @@
     background-color: #AC87D1;
     color: white;
     border-radius: 10px;
+    margin-left: 25px;
+    margin-bottom: 25px;
+
 }
 
 * {
@@ -101,6 +100,7 @@ body {
   float: left;
   width: 25%;
   padding: 0 10px;
+  margin-left: 80px;
 }
 
 /* Remove extra left and right margins, due to padding in columns */
@@ -115,6 +115,7 @@ body {
   content: "";
   display: table;
   clear: both;
+
 }
 
 /* Style the counter cards */
@@ -124,15 +125,25 @@ body {
   text-align: center;
   background-color: #AC87D1;
   color: white;
+  margin-top: 30px;
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .column {
     width: 100%;
     display: block;
     margin-bottom: 20px;
+    margin-left: 0px;
   }
 }
+
+.header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+
 
 </style>
