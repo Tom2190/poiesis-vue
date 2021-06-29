@@ -1,0 +1,22 @@
+<section>
+  <div class="hero-image">
+    <div class="hero-text">
+      <div>
+        <h1 class="font-abril">Admin</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div v-for="user in users" class="card mt-2">
+      <div class="card-body row">
+        <div class="col-md">{{user.name}}{{user.lastname}}</div>
+        <div v-if="!user.canShareTexts" class="col-md">
+          <button class="btn btn-danger">Autorizar</button>
+        </div>
+        <div v-if="user.canShareTexts" class="col-md">
+          Autorizado
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

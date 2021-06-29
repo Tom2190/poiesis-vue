@@ -12,7 +12,6 @@
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
 
-
 export default {
   name: "App",
   components: {
@@ -102,6 +101,13 @@ textarea {
   padding-bottom: 2%;
 }
 
+.two-section-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
 .hero-image img {
   width: 200px;
 }
@@ -113,6 +119,15 @@ textarea {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+}
+
+.two-section-container .hero-image {
+  height: auto;
+  flex-grow: 1;
+}
+
+.two-section-container .bottom-section {
+  flex-grow: 2;
 }
 
 .hero-text {

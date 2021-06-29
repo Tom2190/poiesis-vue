@@ -9,6 +9,7 @@ import Login from "./components/Login/index.vue";
 import Perfil from "./components/Perfil/index.vue";
 import DetalleTexto from "./components/DetalleTexto.vue";
 import TextsByGenre from "./components/TextsByGenre.vue";
+import Admin from "./components/Admin/index.vue";
 
 Vue.use(VueRouter);
 
@@ -24,5 +25,6 @@ export const router = new VueRouter({
     { path: "/textos", component: Textos },
     { path: "/textos/:idTexto", component: DetalleTexto },
     { path: "/login", component: Login },
+    { path: "/admin", component: Admin },
   ],
 });

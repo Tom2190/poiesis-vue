@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const token = sessionStorage.setItem("userSession", testToken);
+const token = sessionStorage.getItem("userSession");
 
 const http = axios.create({
   baseURL: "http://localhost:3000",
@@ -12,11 +12,15 @@ const updatePassword = (user) => {
 };
 
 const updateUser = async (user) => {
-    return await http.put("/users/profile", user)
-}
+  return await http.put("/users/profile", user);
+};
 
 const getUser = async () => {
-    return await http.get("/users",user.id)
-}
+  console.log("HOLAAA");
+  return await http.get("/users");
+};
+const getAllUsers = async () => {
+  return await http.get("/users/all");
+};
 
-export default { updatePassword, updateUser, getUser }
+export { updatePassword, updateUser, getUser, getAllUsers };
