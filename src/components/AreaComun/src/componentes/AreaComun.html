@@ -1,4 +1,4 @@
-<section>
+<section class="two-section-container">
   <div class="hero-image">
     <div class="hero-text">
       <div>
@@ -6,12 +6,14 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid">
-      <div class="botones">
-        <button class="non_fiction" @click="redirectToGenre('non_fiction')"></button>
-        <button class="poetry" @click="redirectToGenre('poetry')"></button>
-        <button class="fiction" @click="redirectToGenre('fiction')"></button>
-      </div>
-    
+  <div class="container-fluid bottom-section">
+    <div class="botones row gy-5">
+      <button
+        class="non_fiction col"
+        @click="redirectToGenre('non_fiction')"
+      ></button>
+      <button class="poetry col" @click="redirectToGenre('poetry')"></button>
+      <button class="fiction col" @click="redirectToGenre('fiction')"></button>
+    </div>
   </div>
 </section>
