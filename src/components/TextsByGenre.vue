@@ -3,30 +3,39 @@
     <div class="hero-image">
       <div class="hero-text">
         <div>
-          <h1 class="font-abril">{{ this.$route.params.genre }}</h1>
+          <h1 class="font-abril">{{ this.$route.params.genre | formatGenre }}</h1>
         </div>
       </div>
     </div>
+    
+  
+
     <div class="bottom-section">
-      <div class="row earchbar-input">
-        <input
-          class="form-control mr-sm-2 column"
-          v-model="criterioDeBusqueda"
-          type="search"
-          placeholder="Buscar por titulo"
-          aria-label="Search"
-        />
-        <a href="#" class="searchbar-clear"></a>
-      </div>
-      <div>
+      
+        <div class="barra">
+          <div class="d-flex bd-highlight mb-3 flex-sm-row flex-column buscar">
+            <input
+                      class="form-control searchbar-input buscar"
+                      v-model="criterioDeBusqueda"
+                      type="search"
+                      placeholder="Buscar por titulo"
+                      aria-label="Search"
+                    />
+            <a href="#" class="searchbar-clear"></a>
+            <button name="agregar" class="boton btn btn-info">Agregar nuevo texto</button>
+          </div>
+        </div>
+   
+      <div class="col">
         <div class="row">
           <div
             class="col-3 column card"
             v-for="(item, index) in filteredList()"
             :key="index"
+            @click="redirectToDetailText(item.id)"
           >
             <h4 class="card-title">{{ item.title }}</h4>
-            <p class="card-text">{{ item.userId }}</p>
+            <p class="card-text">{{ item.userName }}</p>
           </div>
         </div>
       </div>
@@ -38,7 +47,7 @@
 <script>
 // import { mdbIcon, mdbFormInline, mdbInput } from "mdbvue";
 export default {
-  name: "TextsByGenre",
+  name: "texts-by-genre",
   components: {
     // mdbIcon,
     // mdbFormInline,
@@ -74,13 +83,29 @@ export default {
     filteredList() {
       if (this.result) {
         return this.result.filter((post) => {
-          return `${post.title}`
+          return `${post.title}${post.userName}`
             .toLowerCase()
             .includes(this.criterioDeBusqueda.toLowerCase());
         });
-      }
+      };
     },
+
+    redirectToDetailText(id) {
+      this.$router.push({ path: `/textos/${id}`})
+    }
+
   },
+
+  filters: {
+  formatGenre: function (genre) {
+    const genres =  { 
+      poetry : "Poesia",
+      non_fiction : "No Ficción",
+      fiction : "Ficción"
+    }
+    return genres[genre]
+  }
+}
 };
 </script>
 
@@ -105,7 +130,7 @@ body {
 .column {
   float: left;
   width: 25%;
-  padding: 0 10px;
+  padding: 5px 10px 0px 20px;
   margin-left: 80px;
   margin-top: 20px;
 }
@@ -117,12 +142,13 @@ body {
 }
 
 /* Clear floats after the columns */
+/*
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
-
+*/
 /* Style the counter cards */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
@@ -134,13 +160,14 @@ body {
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .column {
     width: 100%;
     display: block;
     margin-bottom: 20px;
     margin-left: 0px;
   }
+ 
 }
 
 .header {
@@ -148,4 +175,17 @@ body {
   flex-flow: row wrap;
   justify-content: space-between;
 }
+
+.boton{
+  color: white;
+  width: 300px;
+  margin-left: 150px;
+}
+
+.barra{
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px 100px 5px;
+}
+
 </style>

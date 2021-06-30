@@ -7,7 +7,7 @@ import Inscripcion from "./components/Inscripcion/index.vue";
 import AreaComun from "./components/AreaComun/index.vue";
 import Login from "./components/Login/index.vue";
 import Perfil from "./components/Perfil/index.vue";
-import DetalleTexto from "./components/DetalleTexto.vue";
+import DetailTexts from "./components/DetailTexts.vue";
 import TextsByGenre from "./components/TextsByGenre.vue";
 import Admin from "./components/Admin/index.vue";
 
@@ -20,10 +20,11 @@ export const router = new VueRouter({
     { path: "/inicio", component: Inicio },
     { path: "/inscripcion", component: Inscripcion },
     { path: "/perfil", component: Perfil },
+    { path: "/textos", component: Textos },
     { path: "/area-comun", component: AreaComun, props: true },
     { path: "/area-comun/:genre", component: TextsByGenre, props: true },
-    { path: "/textos", component: Textos },
-    { path: "/textos/:idTexto", component: DetalleTexto },
+    { path: "/texts", component: TextsByGenre, props: true },
+    { path: "/textos/:idTexto", component: DetailTexts , props: true},
     { path: "/login", component: Login },
     { path: "/admin", component: Admin },
   ],
