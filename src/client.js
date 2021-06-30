@@ -7,8 +7,8 @@ const http = axios.create({
   headers: { "Content-Type": "application/json", "x-access-token": token },
 });
 
-const updatePassword = (user) => {
-  return http.post("/update/password", user);
+const updatePassword = (password) => {
+  return http.post("/users/password", password);
 };
 
 const updateUser = async (user) => {

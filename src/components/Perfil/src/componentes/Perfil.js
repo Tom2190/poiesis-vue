@@ -1,11 +1,14 @@
+import CambiarContrasenia from '../../../CambiarContrasenia.vue';
 import CrearTextoForm from "../../../CrearTextoForm.vue";
 import EditarPerfil from "../../../EditarPerfil.vue";
 import { getUser } from "../../../../client.js";
+
 export default {
   name: "Perfil",
   components: {
     CrearTextoForm,
     EditarPerfil,
+    CambiarContrasenia
   },
   props: [],
   data() {
