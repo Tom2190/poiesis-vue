@@ -29,36 +29,38 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <router-link to="/inicio">
-                <a class="nav-link" href="#">Inicio</a>
+                <a :class="getCssClass('inicio')" href="#">Inicio</a>
               </router-link>
             </li>
             <li v-if="!getIsUserLogged" class="nav-item">
               <router-link to="/inscripcion">
-                <a class="nav-link" href="#">Inscripción</a>
+                <a :class="getCssClass('inscripcion')" href="#">Inscripción</a>
               </router-link>
             </li>
             <li v-if="getIsUserLogged" class="nav-item">
               <router-link to="/perfil">
-                <a class="nav-link" href="#">Perfil</a>
+                <a :class="getCssClass('perfil')" href="#">Perfil</a>
               </router-link>
             </li>
             <li class="nav-item">
               <router-link to="/area-comun">
-                <a class="nav-link" href="#">Área Común</a>
+                <a :class="getCssClass('area-comun')" href="#">Área Común</a>
               </router-link>
             </li>
             <li v-if="getIsUserLogged" class="nav-item">
               <router-link to="/textos">
-                <a class="nav-link" href="#">Mis textos</a>
+                <a :class="getCssClass('textos')" href="#">Mis textos</a>
               </router-link>
             </li>
             <li v-if="!getIsUserLogged" class="nav-item">
               <router-link to="/login">
-                <a class="nav-link" href="#">Login</a>
+                <a :class="getCssClass('login')" href="#">Login</a>
               </router-link>
             </li>
             <li v-if="getIsUserLogged" class="nav-item">
-                <button type="button" @click="logout" class="btn btn-link">Log out</button>
+              <button type="button" @click="logout" class="btn btn-poiesis">
+                Log out
+              </button>
             </li>
           </ul>
         </div>
@@ -72,29 +74,37 @@
   export default  {
     name: 'src-componentes-navbar',
     props: [],
-    mounted () {
-
-    },
     data () {
       return {
-
+        currentRoute: "inicio"
       }
+    },
+    mounted () {
+      this.currentRoute = this.$router.currentRoute.path;
     },
     methods: {
       logout(){
         sessionStorage.clear();
         this.$store.dispatch('validateUserSession');
-        this.$router.push({path:"/inicio"})
+        if(!this.getCurrentRoute.includes(this.currentRoute)){
+          this.$router.push({path:"/inicio"})
+        }
+      },
+      getCssClass(route) {
+        return this.currentRoute.includes(route) ? "nav-link poiesis-text-color" : "nav-link"
+      }
+    },
+    watch: {
+      $route(to) {
+        this.currentRoute = to.path
       }
     },
     computed: {
-      getIsUserLogged(){
-        return this.$store.state.isUserLogged
+      getCurrentRoute() {
+        return this.$router.currentRoute.path
       }
     }
 }
-
-
 </script>
 
 <style scoped lang="css">
@@ -108,15 +118,6 @@ a.navbar-brand {
   background-size: contain;
   background-image: url(../assets/logo-green.svg);
   background-repeat: no-repeat;
-}
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-a:hover {
-  text-decoration: none !important;
 }
 
 .btn-primary {

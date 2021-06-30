@@ -26,11 +26,6 @@ export default {
       console.log("No estas logeado!");
     }
   },
-  computed: {
-    getIsUserLogged() {
-      return this.$store.state.isUserLogged;
-    },
-  },
 };
 </script>
 
@@ -64,6 +59,9 @@ main {
   border-radius: 25px;
   text-align: center;
   width: 100%;
+}
+.p-relative {
+  position: relative;
 }
 
 .full-height {
@@ -195,5 +193,9 @@ textarea {
   border-color: rgb(255, 255, 255);
   color: #ffffff;
   border-radius: 10px;
+}
+
+.poiesis-text-color {
+  color: #4eb7bc !important;
 }
 </style>

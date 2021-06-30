@@ -14,11 +14,19 @@ import axios from "axios";
 
 import VueAxios from "vue-axios";
 
-import store from './store'
+import store from "./store";
+
+import './globalMixins'
 
 import VueForm from "vue-form";
 Vue.use(VueForm);
 Vue.use(VueAxios, axios);
+
+Vue.filter("capitalize", function(value) {
+  if (!value) return "";
+  value = value.toString();
+  return value.charAt(0).toUpperCase() + value.slice(1);
+});
 
 Vue.config.productionTip = false;
 

@@ -117,7 +117,7 @@
       </div>
     </vue-form>
     <div v-if="success" class="alert alert-success" role="alert">
-      Texto creado con éxito!
+      ¡Texto creado con éxito!
     </div>
   </div>
 </template>

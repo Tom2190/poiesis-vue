@@ -1,11 +1,16 @@
+import CambiarContrasenia from "../../../CambiarContrasenia.vue";
 import CrearTextoForm from "../../../CrearTextoForm.vue";
 import EditarPerfil from "../../../EditarPerfil.vue";
+import Loader from "../../../Loader.vue";
 import { getUser } from "../../../../client.js";
+
 export default {
   name: "Perfil",
   components: {
     CrearTextoForm,
     EditarPerfil,
+    CambiarContrasenia,
+    Loader,
   },
   props: [],
   data() {
@@ -26,10 +31,17 @@ export default {
       ],
       view: "crear-texto",
       user: {},
+      isLoading: false,
     };
   },
   async mounted() {
-    await this.getUserFromToken();
+    this.isLoading = true;
+    const res = await this.getUserFromToken();
+    this.user = res.data;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+    console.log(res.data);
   },
   methods: {
     getButtonClass(id) {
@@ -43,9 +55,8 @@ export default {
       this.view = id;
     },
     async getUserFromToken() {
-      const res = await getUser();
-      this.user = res.data;
-      console.log(res.data);
+      const user = await getUser();
+      return user;
     },
   },
   computed: {},
