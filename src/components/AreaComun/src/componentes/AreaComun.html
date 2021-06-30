@@ -6,14 +6,20 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid bottom-section">
+  <div class="container bottom-section">
     <div class="botones row gy-5">
-      <button
-        class="non_fiction col"
-        @click="redirectToGenre('non_fiction')"
-      ></button>
-      <button class="poetry col" @click="redirectToGenre('poetry')"></button>
-      <button class="fiction col" @click="redirectToGenre('fiction')"></button>
+      <div class="col-md-4 col-sm-12">
+        <button
+          class="non_fiction "
+          @click="redirectToGenre('non_fiction')"
+        ></button>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <button class="poetry" @click="redirectToGenre('poetry')"></button>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <button class="fiction" @click="redirectToGenre('fiction')"></button>
+      </div>
     </div>
   </div>
 </section>

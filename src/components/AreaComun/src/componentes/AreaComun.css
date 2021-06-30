@@ -4,6 +4,7 @@ button.poetry {
   background-size: cover;
   background-size: 110%;
   background-position: 50% 50%;
+  background-repeat: no-repeat;
   width: 100%;
   height: 300px;
   font-size: 2rem;

@@ -1,4 +1,4 @@
-<section>
+<section class="two-section-container">
   <div class="hero-image">
     <div class="hero-text">
       <div>
@@ -6,15 +6,19 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container bottom-section">
     <div v-for="user in users" class="card mt-2">
-      <div class="card-body row">
-        <div class="col-md">{{user.name}}{{user.lastname}}</div>
-        <div v-if="!user.canShareTexts" class="col-md">
-          <button class="btn btn-danger">Autorizar</button>
-        </div>
-        <div v-if="user.canShareTexts" class="col-md">
-          Autorizado
+      <div class="card-body row justify-content-between">
+        <div class="col-md">{{user.id}}</div>
+        <div class="col-md">{{user.name}} {{user.lastName}}</div>
+        <div class="col-md">{{user.email}}</div>
+        <div class="col-md text-end">
+          <div v-if="!user.canShareTexts">
+            <button class="btn btn-danger">Autorizar</button>
+          </div>
+          <div v-if="user.canShareTexts">
+            Autorizado
+          </div>
         </div>
       </div>
     </div>
