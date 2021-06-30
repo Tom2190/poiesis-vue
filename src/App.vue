@@ -60,6 +60,9 @@ main {
   text-align: center;
   width: 100%;
 }
+.p-relative {
+  position: relative;
+}
 
 .full-height {
   height: 100%;
@@ -190,5 +193,9 @@ textarea {
   border-color: rgb(255, 255, 255);
   color: #ffffff;
   border-radius: 10px;
+}
+
+.poiesis-text-color {
+  color: #4eb7bc !important;
 }
 </style>

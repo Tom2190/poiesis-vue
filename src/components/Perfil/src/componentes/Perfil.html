@@ -1,7 +1,7 @@
 <section class="cover-img-bg full-height">
   <div class="blue-overlay">
     <div class="container">
-      <div class="card-container p-4">
+      <div class="card-container p-4 p-relative">
         <div class="row">
           <div class="col-sm-12 col-md-3">
             <div class="d-grid gap-2">
@@ -16,12 +16,12 @@
               </button>
             </div>
           </div>
-          <div class="col-sm-12 col-md-9">
+          <div v-if="!isLoading" class="col-sm-12 col-md-9">
             <div v-if="view === 'crear-texto'">
-              <div v-if="user.canShareTexts">
+              <div v-if="user && user.canShareTexts">
                 <CrearTextoForm />
               </div>
-              <div v-else>
+              <div v-if="user && !user.canShareTexts">
                 <div class="alert alert-danger" role="alert">
                   El profesor debe autorizarte a subir textos!
                 </div>
@@ -31,10 +31,11 @@
               <EditarPerfil :user="user" />
             </div>
             <div v-else="view === 'cambiar-password'">
-              <CambiarContrasenia/>
+              <CambiarContrasenia />
             </div>
           </div>
         </div>
+        <loader v-if="isLoading"></loader>
       </div>
     </div>
   </div>

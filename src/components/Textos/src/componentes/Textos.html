@@ -6,7 +6,7 @@
       </div>
     </div>
   </div>
-  <div class="bottom-section">
+  <div v-if="result.length > 0" class="bottom-section p-relative">
     <div class="container mt-3 mb-3">
       <div class="row g-2">
         <form class="col-md-4">
@@ -34,6 +34,12 @@
           </div>
         </div>
       </div>
+    </div>
+    <loader v-if="isLoading"></loader>
+  </div>
+  <div v-if="result.length == 0 && !isLoading" class="container mt-3">
+    <div class="alert alert-danger" role="alert">
+      ¡Este usuario no posee ningún texto!
     </div>
   </div>
 </section>
