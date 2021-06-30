@@ -215,6 +215,9 @@
           </div>
         </vue-form>
       </div>
+      <div v-if="success" class="alert alert-success" role="alert">
+      ¡Perfil actualizado!
+      </div>
     </div>
   </section>
 </template>
@@ -231,6 +234,7 @@ data () {
     formState: {},
     nombreLengthMin : 3,
     nombreLengthMax: 15,
+    success: false
     }
 },
 computed: {
@@ -266,6 +270,10 @@ methods: {
         } catch (error) {
             console.log("¡ERROR!", error);
         }
+        this.success = true;
+        setTimeout(() => {
+          this.success = false;
+        }, 4000);
         this.formData = this.getInicialData(updatedUser)
         this.formState._reset()
     }
