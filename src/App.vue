@@ -26,11 +26,6 @@ export default {
       console.log("No estas logeado!");
     }
   },
-  computed: {
-    getIsUserLogged() {
-      return this.$store.state.isUserLogged;
-    },
-  },
 };
 </script>
 
