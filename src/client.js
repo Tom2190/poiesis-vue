@@ -22,5 +22,8 @@ const getUser = async () => {
 const getAllUsers = async () => {
   return await http.get("/users/all");
 };
+const getTextsByUser = async () => {
+  return await http.get("/texts/user");
+};
 
-export { updatePassword, updateUser, getUser, getAllUsers };
+export { updatePassword, updateUser, getUser, getAllUsers, getTextsByUser };
