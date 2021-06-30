@@ -16,6 +16,8 @@ import VueAxios from "vue-axios";
 
 import store from "./store";
 
+import './globalMixins'
+
 import VueForm from "vue-form";
 Vue.use(VueForm);
 Vue.use(VueAxios, axios);

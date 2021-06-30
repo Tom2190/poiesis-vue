@@ -86,7 +86,9 @@
       logout(){
         sessionStorage.clear();
         this.$store.dispatch('validateUserSession');
-        this.$router.push({path:"/inicio"})
+        if(!this.getCurrentRoute.includes(this.currentRoute)){
+          this.$router.push({path:"/inicio"})
+        }
       },
       getCssClass(route) {
         return this.currentRoute.includes(route) ? "nav-link poiesis-text-color" : "nav-link"
@@ -98,9 +100,6 @@
       }
     },
     computed: {
-      getIsUserLogged(){
-        return this.$store.state.isUserLogged
-      },
       getCurrentRoute() {
         return this.$router.currentRoute.path
       }
