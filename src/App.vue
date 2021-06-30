@@ -103,9 +103,9 @@ textarea {
 
 .two-section-container {
   height: 100%;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: stretch; */
 }
 
 .hero-image img {
@@ -122,12 +122,15 @@ textarea {
 }
 
 .two-section-container .hero-image {
-  height: auto;
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  height: 25%;
 }
 
 .two-section-container .bottom-section {
-  flex-grow: 2;
+  /* flex-grow: 2; */
+  height: 75%;
+  max-height: 75%;
+  overflow: scroll;
 }
 
 .hero-text {
