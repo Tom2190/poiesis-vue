@@ -12,13 +12,13 @@ const updatePassword = (user) => {
 };
 
 const updateUser = async (user) => {
-  return await http.put("/users/profile", user);
+  return await http.put("/users/profile", { user });
 };
 
 const getUser = async () => {
-  console.log("HOLAAA");
   return await http.get("/users");
 };
+
 const getAllUsers = async () => {
   return await http.get("/users/all");
 };

@@ -227,32 +227,36 @@ components: {},
 props: ["user"],
 data () {
     return {
-    formData : this.getInicialData(),
+    formData : {},
     formState: {},
     nombreLengthMin : 3,
-    nombreLengthMax: 10,
+    nombreLengthMax: 15,
     }
 },
 computed: {
 
 },
+mounted() {
+  this.formData = this.getInicialData(this.user)
+},
 methods: {
-    getInicialData() {
+    getInicialData(user) {
     return {
-        name: this.user.name,
-        lastName: this.user.lastName,
-        email: this.user.email,
-        password: this.user.password,
-        chosenDateTime: this.user.chosenDateTime,
-        writingFrequency: this.user.writingFrequency,
-        writingGenre: this.user.writingGenre,
-        phone: this.user.phone,
-        dni: this.user.dni,
+        name: user.name,
+        lastName: user.lastName,
+        email: user.email,
+        password: user.password,
+        chosenDateTime: user.chosenDateTime,
+        writingFrequency: user.writingFrequency,
+        writingGenre: user.writingGenre,
+        phone: user.phone,
+        dni: user.dni,
     }
     },
     async getUser() {
         return await getUser()
     },
+
     async enviar() {
         const updatedUser =  {...this.formData}
         console.log(updatedUser);
@@ -262,10 +266,10 @@ methods: {
         } catch (error) {
             console.log("¡ERROR!", error);
         }
-        this.formData = this.getInicialData()
+        this.formData = this.getInicialData(updatedUser)
         this.formState._reset()
     }
-}
+ }
 }
 </script>
 
