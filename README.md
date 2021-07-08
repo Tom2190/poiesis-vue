@@ -26,17 +26,17 @@ npm run lint
 
 # Requisitos del proyecto final con vue
 
-- [ ] Vue CLI 2
-- [ ] Framework CSS (Bootstrap, Materialize, Material)
-- [ ] Componentes (archivo único, múltiples archivos)
-- [ ] Uso de métodos y propiedades computadas
-- [ ] Directivas Data Binding (v-bind ‘:’, v-on ‘@’, v-model)
-- [ ] Directivas estructurales (v-if, v-show, v-for, v-else, v-else-if)
-- [ ] Directivas de atributos (:class :style)
-- [ ] Lifecycle Hooks
-- [ ] Manejo de Props y eventos
-- [ ] Formulario con validaciones
-- [ ] Routeo de componentes con parámetros (manejados desde HTML y desde código)
-- [ ] Implementación de una API Rest Full mediante axios (con async/await)
-- [ ] Uso de mixins y filtros de vista
-- [ ] Uso del patrón de estado global Vuex
+- [x] Vue CLI 2
+- [x] Framework CSS (Bootstrap, Materialize, Material)
+- [x] Componentes (archivo único, múltiples archivos)
+- [x] Uso de métodos y propiedades computadas
+- [x] Directivas Data Binding (v-bind ‘:’, v-on ‘@’, v-model)
+- [x] Directivas estructurales (v-if, v-show, v-for, v-else, v-else-if)
+- [x] Directivas de atributos (:class :style)
+- [x] Lifecycle Hooks
+- [x] Manejo de Props y eventos
+- [x] Formulario con validaciones
+- [x] Routeo de componentes con parámetros (manejados desde HTML y desde código)
+- [x] Implementación de una API Rest Full mediante axios (con async/await)
+- [x] Uso de mixins y filtros de vista
+- [x] Uso del patrón de estado global Vuex

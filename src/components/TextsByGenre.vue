@@ -3,29 +3,30 @@
     <div class="hero-image">
       <div class="hero-text">
         <div>
-          <h1 class="font-abril">{{ this.$route.params.genre | formatGenre }}</h1>
+          <h1 class="font-abril">
+            {{ this.$route.params.genre | formatGenre }}
+          </h1>
         </div>
       </div>
     </div>
-    
-  
 
     <div class="bottom-section">
-      
-        <div class="barra">
-          <div class="d-flex bd-highlight mb-3 flex-sm-row flex-column buscar">
-            <input
-                      class="form-control searchbar-input buscar"
-                      v-model="criterioDeBusqueda"
-                      type="search"
-                      placeholder="Buscar por titulo"
-                      aria-label="Search"
-                    />
-            <a href="#" class="searchbar-clear"></a>
-            <button name="agregar" class="boton btn btn-info">Agregar nuevo texto</button>
-          </div>
+      <div class="barra">
+        <div class="d-flex bd-highlight mb-3 flex-sm-row flex-column buscar">
+          <input
+            class="form-control searchbar-input buscar"
+            v-model="criterioDeBusqueda"
+            type="search"
+            placeholder="Buscar por titulo"
+            aria-label="Search"
+          />
+          <a href="#" class="searchbar-clear"></a>
+          <button name="agregar" class="boton btn btn-info">
+            Agregar nuevo texto
+          </button>
         </div>
-   
+      </div>
+
       <div class="col">
         <div class="row">
           <div
@@ -87,25 +88,24 @@ export default {
             .toLowerCase()
             .includes(this.criterioDeBusqueda.toLowerCase());
         });
-      };
+      }
     },
 
     redirectToDetailText(id) {
-      this.$router.push({ path: `/textos/${id}`})
-    }
-
+      this.$router.push({ path: `/textos/${id}` });
+    },
   },
 
   filters: {
-  formatGenre: function (genre) {
-    const genres =  { 
-      poetry : "Poesia",
-      non_fiction : "No Ficción",
-      fiction : "Ficción"
-    }
-    return genres[genre]
-  }
-}
+    formatGenre: function(genre) {
+      const genres = {
+        poetry: "Poesia",
+        non_fiction: "No Ficción",
+        fiction: "Ficción",
+      };
+      return genres[genre];
+    },
+  },
 };
 </script>
 
@@ -167,7 +167,6 @@ body {
     margin-bottom: 20px;
     margin-left: 0px;
   }
- 
 }
 
 .header {
@@ -176,16 +175,15 @@ body {
   justify-content: space-between;
 }
 
-.boton{
+.boton {
   color: white;
   width: 300px;
   margin-left: 150px;
 }
 
-.barra{
+.barra {
   margin-left: 10px;
   margin-right: 10px;
   padding: 10px 100px 5px;
 }
-
 </style>

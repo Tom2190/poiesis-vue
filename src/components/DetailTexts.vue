@@ -5,11 +5,10 @@
         <div>
           <h1 class="font-abril">{{ this.$route.params.idTexto }}</h1>
           <h1 class="font-abril">{{ this.result.title }}</h1>
-          
         </div>
       </div>
     </div>
-    
+
     <div class="container mt-4 mb-4">
       <div class="row">
         <div class="col-md-10 center">
@@ -33,14 +32,14 @@
 </template>
 
 <script lang="js">
-import axios from 'axios';
 
 
   export default  {
     name: 'DetailTexts',
     props: [],
-    mounted () {
-      
+    async mounted() {
+      let id = this.$route.params.idTexto;
+      await this.getText(id);
     },
     data () {
       return {
@@ -49,31 +48,26 @@ import axios from 'axios';
       }
     },
     computed: {
-      async mounted() {
-        let id = this.$route.params.idTexto;
-        await this.getText(id);
-        },
+
     },
-    
+
     methods: {
-      
+
 
      async getText(id) {
       const { texto } = await this.axios.get(
         `http://localhost:3000/texts/detail?textId=${id}`
       );
-      
+
       this.result = texto.data.title;
       console.log(this.result);
-      
+
     },
     },
-    
-  
-      
+
+
+
 }
-
-
 </script>
 
 <style scoped lang="css">
@@ -84,6 +78,4 @@ import axios from 'axios';
 .hero-image.ficcion .hero-text {
   background-color: rgba(133, 78, 188, 0.68);
 }
-
-
 </style>
