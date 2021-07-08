@@ -21,7 +21,7 @@
             aria-label="Search"
           />
           <a href="#" class="searchbar-clear"></a>
-          <button name="agregar" class="boton btn btn-info">
+          <button name="agregar" class="boton btn btn-poiesis">
             Agregar nuevo texto
           </button>
         </div>

@@ -3,8 +3,7 @@
     <div class="hero-image ficcion">
       <div class="hero-text">
         <div>
-          <h1 class="font-abril">{{ this.$route.params.idTexto }}</h1>
-          <h1 class="font-abril">{{ this.result.title }}</h1>
+          <h1 class="font-abril">{{ result.title }}</h1>
         </div>
       </div>
     </div>
@@ -12,12 +11,13 @@
     <div class="container mt-4 mb-4">
       <div class="row">
         <div class="col-md-10 center">
-          <h6><strong>Nombre autor</strong></h6>
-          <p>fecha</p>
+          <h6>
+            <strong>{{ result.userName }}</strong>
+          </h6>
+          <p>Fecha de creación: {{ result.createdAt | formatDate }}</p>
           <div class="seccion-texto">
             <pre>
-            Texto...
-            
+            {{ result.content }}
             </pre>
           </div>
         </div>
@@ -32,8 +32,7 @@
 </template>
 
 <script lang="js">
-
-
+import moment from "moment"
   export default  {
     name: 'DetailTexts',
     props: [],
@@ -47,27 +46,21 @@
         idTexto: "",
       }
     },
-    computed: {
-
-    },
-
     methods: {
-
-
      async getText(id) {
-      const { texto } = await this.axios.get(
+      const res= await this.axios.get(
         `http://localhost:3000/texts/detail?textId=${id}`
       );
+      this.result = res.data;
 
-      this.result = texto.data.title;
-      console.log(this.result);
-
+     },
     },
-    },
-
-
-
-}
+     filters: {
+       formatDate: function(date){
+        return moment(date).locale('es').format('L')
+       }
+     }
+    }
 </script>
 
 <style scoped lang="css">

@@ -14,20 +14,13 @@
   export default  {
     name: 'src-componentes-navbar',
     props: [],
-    mounted () {
 
-    },
     data () {
       return {
 
       }
     },
-    methods: {
 
-    },
-    computed: {
-
-    }
 }
 </script>
 

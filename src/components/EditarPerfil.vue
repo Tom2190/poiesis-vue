@@ -35,7 +35,9 @@
                     {{ nombreLengthMin }} caracteres
                   </div>
                   <div
-                    v-if="formData.name.length == nombreLengthMax"
+                    v-if="
+                      formData.name && formData.name.length == nombreLengthMax
+                    "
                     class="alert alert-danger mt-1"
                   >
                     Máximo de caracteres ({{ nombreLengthMax }}) alcanzados
@@ -216,7 +218,7 @@
         </vue-form>
       </div>
       <div v-if="success" class="alert alert-success" role="alert">
-      ¡Perfil actualizado!
+        ¡Perfil actualizado!
       </div>
     </div>
   </section>
