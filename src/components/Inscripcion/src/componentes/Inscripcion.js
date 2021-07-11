@@ -9,6 +9,7 @@ export default {
       formState: {},
       nombreLengthMin : 3,
       nombreLengthMax: 10,
+      dniLength: 8,
     }
   },
   computed: {
@@ -41,8 +42,8 @@ export default {
         sessionStorage.setItem('userSession', token);
         // const testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InduUDVZMDVpcTdLNE51TEZOMHFTIiwiaWF0IjoxNjI0MzIzNjE4fQ.XxN09oUdxS-AGiXNMH8JJ6q8H9BoKxyrOzYDpmogZWk"
         // sessionStorage.setItem('userSession', testToken);
-        this.$store.dispatch('validateUserSession');
-        this.$router.push({path:"/inicio"})
+        await this.$store.dispatch('validateUserSession');
+        await this.$router.push({path:"/inicio"});
       } catch (error) {
         console.log("ERROR!", error);
       }
